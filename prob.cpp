@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <set>
-#include <vector>
 #include <sstream>
 #include <iterator>
 
@@ -23,18 +22,21 @@ class SigmaField
             }
 
             // making powerset
-            for (int num_of_object=0; num_of_object< sample_space.size(); num_of_object++){
-                for (int start_num=0; start_num<sample_space.size(); start_num++){
+            for (int num_of_object=0; num_of_object< sample_space.size(); num_of_object++) {
+                // make start num and end num instead of using slice
+                for (int start_num=0; start_num<sample_space.size(); start_num++) {
                     int end_num = start_num + num_of_object;
                     // out of rangeは処理を行わない
                     if (end_num >= sample_space.size()){
                         continue;
                     }
-                    // start から end までを追加する
+                    // sample_space の start から end までを追加する
                     vector<int> vec_;
                     for (int i=start_num; i<=end_num; i++){
                         vec_.push_back(sample_space[i]);
                     }
+
+                    // power setに作成した要素(全事象の部分集合を登録する)
                     power_set.push_back(vec_);
                 }
             }
