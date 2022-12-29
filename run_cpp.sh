@@ -1,0 +1,1 @@
+g++ -o bin_files/prob prob.cpp && bin_files/prob
